@@ -17,6 +17,7 @@
 			<interceptor name="contextView" class="contextViewInterceptor" />
 			<interceptor name="settings" class="settingsInterceptor" />
 			<interceptor name="prefetch" class="prefetchInterceptor" />
+			<interceptor name="authorize" class="authorizationInterceptor" />
 
 			<interceptor-stack name="authenticationStack">
 				<interceptor-ref name="exception" />
@@ -27,6 +28,7 @@
 				<interceptor-ref name="validation">
 					<param name="validateAnnotatedMethodOnly">true</param>
 				</interceptor-ref>
+				<interceptor-ref name="authorize" />
 			</interceptor-stack>
 			<interceptor-stack name="noAuthenticationStack">
 				<interceptor-ref name="exception" />
