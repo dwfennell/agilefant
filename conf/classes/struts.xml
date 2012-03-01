@@ -22,21 +22,28 @@
 			<interceptor-stack name="authenticationStack">
 				<interceptor-ref name="exception" />
 				<interceptor-ref name="completeStack" />
+				<interceptor-ref name="authorize" />
 				<interceptor-ref name="refreshUser" />
 				<interceptor-ref name="contextView" />
 				<interceptor-ref name="settings" />
 				<interceptor-ref name="validation">
 					<param name="validateAnnotatedMethodOnly">true</param>
 				</interceptor-ref>
-				<interceptor-ref name="authorize" />
+				
 			</interceptor-stack>
+			
 			<interceptor-stack name="noAuthenticationStack">
 				<interceptor-ref name="exception" />
 				<interceptor-ref name="completeStack" />
 			</interceptor-stack>
+			
+			<interceptor-stack name="authorizationStack">
+				<interceptor-ref name="authorize" />
+			</interceptor-stack>
 
 			<interceptor-stack name="prefetchStack">
 				<interceptor-ref name="exception" />
+				<interceptor-ref name="authorize" />
 				<interceptor-ref name="prefetch" />
 				<interceptor-ref name="completeStack" />
 				<interceptor-ref name="refreshUser" />
@@ -44,6 +51,7 @@
 				<interceptor-ref name="validation">
 					<param name="validateAnnotatedMethodOnly">true</param>
 				</interceptor-ref>
+				
 			</interceptor-stack>
 		</interceptors>
 

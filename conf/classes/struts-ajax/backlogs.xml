@@ -16,6 +16,7 @@
         <param name="patterns">+id, +rank, +class, -*</param>
       </result>
     </action>
+    
     <action name="retrieveBacklog" method="retrieve" class="backlogAction">
       <result name="success" type="json">
         <param name="target">backlog</param>
@@ -52,6 +53,7 @@
     </action>
     
     <action name="retrieveProduct" method="retrieve" class="productAction">
+      <interceptor-ref name="authorizationStack" />
       <result name="success" type="json">
         <param name="target">product</param>
         <param name="patterns">-stories, -projects, -children</param>
@@ -150,6 +152,7 @@
     </action>
     
     <action name="projectData" class="projectAction" method="projectData">
+      <interceptor-ref name="authorizationStack" />
       <result name="success" type="json">
         <param name="target">project</param>
         <param name="patterns">+assignees.id, +assignees.initials, +assignees.class, -assignees.*, +children.id, +children.class, +children.name, -children.*</param>
@@ -215,6 +218,7 @@
     </action>
     
     <action name="iterationData" class="iterationAction" method="fetchIterationData">
+      <interceptor-ref name="authorizationStack" />
       <result name="success" type="json">
         <param name="target">iteration</param>
         <param name="patterns">-parent, -stories, -*.hourEntries, 

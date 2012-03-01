@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.opensymphony.xwork2.ActionInvocation;
+import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 import com.opensymphony.xwork2.interceptor.Interceptor;
 
 import fi.hut.soberit.agilefant.business.UserBusiness;
@@ -11,22 +12,10 @@ import fi.hut.soberit.agilefant.business.UserBusiness;
 
 
 @Component("authorizationInterceptor")
-public class AuthorizationInterceptor implements Interceptor {
+public class AuthorizationInterceptor extends AbstractInterceptor {
 
-    @Autowired
-    private UserBusiness userBusiness;
-    
-    @Override
-    public void destroy() {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void init() {
-        // TODO Auto-generated method stub
-
-    }
+    //@Autowired
+    //private UserBusiness userBusiness;
 
     @Override
     public String intercept(ActionInvocation invocation) throws Exception {
